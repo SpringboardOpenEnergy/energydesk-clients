@@ -26,7 +26,7 @@ class Fundamentals:
             return None
 
 if __name__ == '__main__':
-    token = "66b9f0456ae6cb918c419717a235f78d18b3a95c"
-    server_url = "http://127.0.0.1:8000"
+    token = "tokenvalue"
+    server_url = "https://127.0.0.1:8000"
     df=Fundamentals.query_unavailable_production(server_url, token, "2022-07-01", "2022-07-05")
     print(df)
