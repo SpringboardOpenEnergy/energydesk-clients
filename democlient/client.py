@@ -30,7 +30,7 @@ if __name__ == '__main__':
     print(df)
     df.index=df['date']
     # Pandas re sapling  YS=startof year, QS=startof quarter, MS=startofmonth, W =Week
-    df = df.resample("MS").mean()
+    df = df.resample("D").mean()
     df['EURNOK'] = 10 #eurnok
     df['rate'] = 0.05  # Interest rate
     print(df)
