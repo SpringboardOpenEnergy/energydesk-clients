@@ -16,4 +16,5 @@ def cancel_dispatch(date):
 
 if __name__ == '__main__':
     print("Cancel dispatch")
-    cancel_dispatch(datetime.today() + timedelta(days=1))
+    cancel_dispatch(datetime.today())   # Cancel all dispatches today
+    cancel_dispatch(datetime.today() + timedelta(days=1)) #Cancel all dispatches tomorrow
