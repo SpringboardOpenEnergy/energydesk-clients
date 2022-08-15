@@ -8,11 +8,20 @@ from marketdata.spotprices import SpotPrices
 from curvedata.forward_curves import ForwardCurves
 from os.path import join, dirname
 from dotenv import load_dotenv
-
+import pytz
+from dateutil import parser
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     handlers=[logging.FileHandler("energydesk_client.log"),
                               logging.StreamHandler()])
+
+# Data retrieved from server are in UTC time ("GMT without daylight savings time")
+# This function converts to local time
+def convert_datetime_from_utc(utc_str, loczone="Europe/Oslo"):
+    timezone = pytz.timezone(loczone)
+    utc_dt=parser.isoparse(str(utc_str))
+    d_loc = utc_dt.astimezone(timezone)
+    return d_loc
 
 def load_env():
     logging.info("Loading environment")
@@ -30,7 +39,7 @@ if __name__ == '__main__':
     print(df)
     df.index=df['date']
     # Pandas re sapling  YS=startof year, QS=startof quarter, MS=startofmonth, W =Week
-    df = df.resample("D").mean()
+    df = df.resample("MS").mean()
     df['EURNOK'] = 10 #eurnok
     df['rate'] = 0.05  # Interest rate
     print(df)
