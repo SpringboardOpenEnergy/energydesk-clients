@@ -27,13 +27,30 @@ class MoneyMarkets:
     @staticmethod
     def fetch_zero_coupon_rates(base_url, token):
         logger.info("Fetching zero coupon rates")
-        headers = {'Authorization': 'Token ' +token}
+        t="LqXReN1nGU4MUKzuz2kKkIrS1yI0tR"
+
+        headers = {'Authorization': 'Bearer ' +t}
         server_url=base_url + '/api/moneymarkets/zero_coupon_rates/'
         qry_payload = {
             "period_from": "2019-01-01",
             "period_until": "2022-06-01",
         }
+        print(headers)
         result = requests.post(server_url, json=qry_payload,   headers=headers)
+        try:
+            resp_content = result.json()
+        except ValueError:
+            resp_content = result.content
+            import os
+            import webbrowser
+            path = os.path.abspath('temp.html')
+            url = 'file://' + path
+            with open(path, 'w') as f:
+                uu = resp_content.decode('utf8')
+                #s = uu.encode('cp1250')
+                f.write(uu)
+            webbrowser.open(url)
+
         if result.status_code==200:
             df = pd.read_json(result.json()['dataframe'], orient='records')
             logger.debug("Zero coupon rates " + str(df))

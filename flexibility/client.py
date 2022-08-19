@@ -1,10 +1,9 @@
 import requests
 from datetime import datetime, timedelta
-
 def cancel_dispatch(date):
     token="ebb44e807b185d0b4a410fec4b971fda9d8e4cad"
     headers = {'Authorization': 'Token ' + token}
-    server_url = 'https://dev.smartflex.no/api/flexoptimizer/cancel_dispatch/'
+    server_url = 'https://smartflex.springboard.energy/api/flexoptimizer/cancel_dispatch/'
     from_time = date.replace(hour=1, minute=0, second=0)
     until_time = date.replace(hour=23, minute=0, second=0)
     qry_payload = {

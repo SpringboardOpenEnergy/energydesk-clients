@@ -1,5 +1,7 @@
 import json
 import os
+import sys
+
 import requests
 import logging
 from marketdata.derivatives import Derivatives
@@ -32,6 +34,9 @@ if __name__ == '__main__':
     load_env()
     token = os.environ.get("basic_auth_token")
     server_url = os.environ.get("server_url")
+    df=MoneyMarkets.fetch_zero_coupon_rates(server_url, token)
+    print(df)
+    sys.exit(0)
     price=ForwardCurves.get_period_price(server_url, token, "2023-01-01", "2025-01-01", "NO1", "EUR")
     print("Curve price is ", price)
 
