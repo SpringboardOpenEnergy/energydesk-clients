@@ -10,50 +10,40 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 #  Change
-class Derivatives:
+class DerivativesApi:
 
     @staticmethod
-    def fetch_markets(base_url, token, market_place="Nasdaq OMX"):
+    def fetch_markets(api_connection, market_place="Nasdaq OMX"):
         logger.info("Fetching market places")
-        headers = {'Authorization': 'Token ' + token}
-        server_url= base_url + '/api/markets/marketplaces/'
-        result = requests.get(server_url,  headers=headers)
+        json_res = api_connection.exec_get_url('/api/markets/marketplaces/')
+        print(json_res)
         markets=[]
-        if result.status_code==200:
-            for mplace in result.json():
-                logger.info(mplace['name'])
-                if mplace['name']==market_place:
-                    logger.info("Found our main market place; list available markets traded")
-                    for market_url in mplace['markets']:
-                        market_url=market_url.replace("http://dev","https://dev")  # A bug on server not showing https
-                        logger.info("Lookup market on URL " + str(market_url))
-                        result2 = requests.get(market_url, headers=headers)
-                        market=result2.json()
-                        logger.info("Market traded on " + str(market_place) + ": " + str(market['name']))
-                        markets.append(market['name'])
-        else:
-            logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
+        for mplace in json_res:
+            logger.info(mplace['name'])
+            if mplace['name']==market_place:
+                logger.info("Found our main market place; list available markets traded")
+                for market_url in mplace['markets']:
+                    market_url=market_url.replace("http://dev","https://dev")  # A bug on server not showing https
+                    logger.info("Lookup market on URL " + str(market_url))
+                    result2 = requests.get(market_url, headers=api_connection.get_authorization_header())
+                    market=result2.json()
+                    logger.info("Market traded on " + str(market_place) + ": " + str(market['name']))
+                    markets.append(market['name'])
         return markets
 
     @staticmethod
-    def fetch_products(base_url, token, market_place, market_name, traded_from_date):
+    def fetch_products(api_connection, market_place, market_name, traded_from_date):
         logger.info("Fetching products traded after date " + str(traded_from_date))
-        headers = {'Authorization': 'Token ' + token}
-        server_url= base_url + '/api/markets/traded_products/'
-        logger.info("Fetching prices in " + market_name)
         qry_payload = {
             "market_place": market_place,
             "market_name": market_name,
             "tradingdate_from": traded_from_date,
         }
-
-        result = requests.post(server_url, json=qry_payload, headers=headers)
-        if result.status_code == 200:
-            df = pd.read_json(result.json()['dataframe'], orient='records')
+        json_res=api_connection.exec_post_url('/api/markets/traded_products/', qry_payload)
+        if json_res is not None:
+            df = pd.DataFrame(data=eval(json_res))
             logger.info("Products " + str(df))
-            return df
-        else:
-            logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
+        return None
 
     @staticmethod
     def fetch_product_prices(base_url, token, market_place, market_name, area=None):
