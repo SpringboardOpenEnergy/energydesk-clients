@@ -5,7 +5,8 @@ import logging
 from energydeskclient.api.api_connection import ApiConnection
 from energydeskclient.curvedata.curve_api import CurveApi
 from energydeskclient.marketdata.derivatives_api import DerivativesApi
-from energydeskclient.customer.customer_api import CustomerApi
+from energydeskclient.customers.customer_api import CustomerApi
+from energydeskclient.assets.assets_api import AssetsApi
 from os.path import join, dirname
 from dotenv import load_dotenv
 import pytz, environ
@@ -40,5 +41,5 @@ if __name__ == '__main__':
     #print(price)
     user_profile=CustomerApi.get_user_profile(api_conn)
     print(user_profile)
-    DerivativesApi.fetch_markets(api_conn)
-    DerivativesApi.fetch_products(api_conn, "Nasdaq OMX", "Nordic Power", "2022-01-01")
+    AssetsApi.get_asset_types(api_conn)
+    CustomerApi.get_companies(api_conn)
