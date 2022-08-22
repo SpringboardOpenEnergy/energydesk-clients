@@ -22,7 +22,7 @@ class AssetOwnersApi:
         if json_res is None:
             return None
         print(json_res)
-        df = pd.DataFrame(data=json_res)
+        df = pd.DataFrame(data=eval(json_res))
         return df
 
     @staticmethod
@@ -31,7 +31,7 @@ class AssetOwnersApi:
         if json_res is None:
             return None
         print(json_res)
-        df = pd.DataFrame(data=json_res)
+        df = pd.DataFrame(data=eval(json_res))
         return df
 
     @staticmethod
