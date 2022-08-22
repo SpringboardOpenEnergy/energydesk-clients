@@ -19,12 +19,18 @@ class AssetOwnersApi:
     @staticmethod
     def get_asset_ownerships(api_connection):
         json_res = api_connection.exec_get_url('/api/asset-ownership/get-asset-ownerships/')
-        return json_res
+        if json_res is None:
+            return None
+        df = pd.DataFrame(data=json_res)
+        return df
 
     @staticmethod
     def get_asset_ownerships_pivoted(api_connection):
         json_res = api_connection.exec_get_url('/api/asset-ownership/get-asset-ownerships-pivoted/')
-        return json_res
+        if json_res is None:
+            return None
+        df = pd.DataFrame(data=json_res)
+        return df
 
     @staticmethod
     def all_asset_ownership_paths(api_connection):
