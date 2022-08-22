@@ -15,8 +15,4 @@ class AssetOwnersApi:
     @staticmethod
     def load_ownerships(api_connection):
         json_res = api_connection.exec_get_url('/api/asset-ownership/load-ownership-graph/')
-        if json_res is None:
-            return None
-        print(json_res)
-        df = pd.DataFrame(data=json_res)
-        return df
+        return json_res
