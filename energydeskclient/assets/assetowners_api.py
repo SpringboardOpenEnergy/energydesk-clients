@@ -21,6 +21,7 @@ class AssetOwnersApi:
         json_res = api_connection.exec_get_url('/api/asset-ownership/get-asset-ownerships/')
         if json_res is None:
             return None
+        print(json_res)
         df = pd.DataFrame(data=json_res)
         return df
 
@@ -29,6 +30,7 @@ class AssetOwnersApi:
         json_res = api_connection.exec_get_url('/api/asset-ownership/get-asset-ownerships-pivoted/')
         if json_res is None:
             return None
+        print(json_res)
         df = pd.DataFrame(data=json_res)
         return df
 
