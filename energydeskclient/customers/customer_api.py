@@ -22,6 +22,9 @@ class CustomerApi:
         if json_res is None:
             return None
         #print(json_res)
-        df = pd.DataFrame(data=json_res)
+        df = pd.DataFrame(data=json_res["companies"])
         print(df)
+        print(df.columns)
+        for index,row in df.iterrows():
+            print(row["company_name"],row["registry_number"])
         return df

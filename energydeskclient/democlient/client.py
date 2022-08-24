@@ -41,5 +41,5 @@ if __name__ == '__main__':
     #print(price)
     user_profile=CustomerApi.get_user_profile(api_conn)
     print(user_profile)
-    AssetsApi.get_asset_types(api_conn)
+    #AssetsApi.get_asset_types(api_conn)
     CustomerApi.get_companies(api_conn)
