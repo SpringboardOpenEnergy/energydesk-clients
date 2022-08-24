@@ -1,7 +1,7 @@
-energydeskclient
-================
+energydesk
+==========
 
 .. toctree::
    :maxdepth: 4
 
-   energydeskclient
+   energydesk
