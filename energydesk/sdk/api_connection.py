@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class ApiConnection(object):
     """This is a class for holding tokens used during login to Energy Desk REST API
 
-      :param base_url: the prefix of the URL (https://api-test.energydesk.no, http://127.0.0.1:(0000)
+      :param base_url: the prefix of the URL (examples: https://api-test.energydesk.no, http://127.0.0.1:(0000)
       :type base_url: str:
 
       """
@@ -24,7 +24,13 @@ class ApiConnection(object):
         return self.base_url
         """Returns a string to be used as URL prefix for RET API
         """
+
     def validate_token(self, token):
+        """Validates a token
+
+        :param token: description...
+        :type token: str, required
+        """
         http.client._MAXHEADERS = 1000
         server_url = self.get_base_url() + "/auth/convert-token"
         payload = {
