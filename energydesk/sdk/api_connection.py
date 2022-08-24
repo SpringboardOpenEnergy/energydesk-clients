@@ -29,7 +29,7 @@ class ApiConnection(object):
     def validate_token(self, token):
         """Validates a token
 
-        :param token: description...
+        :param token: API token
         :type token: str, required
         """
         http.client._MAXHEADERS = 1000
@@ -51,7 +51,7 @@ class ApiConnection(object):
     def set_token(self, token, token_type="Bearer"):
         """Sets a token
 
-        :param token: description...
+        :param token: API token
         :type token: str, required
         :param token_type: bearer or token
         :type token_type: str, required
