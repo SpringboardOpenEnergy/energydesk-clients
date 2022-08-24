@@ -2,11 +2,7 @@ import requests
 import json
 import logging
 import pandas as pd
-import pandas as pd
-import pytz
-from datetime import datetime, timedelta, timezone
-import datetime as datetimetype
-from django.conf import settings
+
 
 logger = logging.getLogger(__name__)
 #  Change
