@@ -1,5 +1,5 @@
 Preparation
-pip install sphinx sphinx_rtd_theme
+pip install sphinx sphinx_rtd_theme sphinx_theme
 
 Go into parent directory (above docs)  and run
 docs % sphinx-apidoc -o docs energydesk/
