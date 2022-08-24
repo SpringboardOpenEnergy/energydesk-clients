@@ -2,11 +2,11 @@ import sys
 
 import requests
 import logging
-from energydeskclient.api.api_connection import ApiConnection
-from energydeskclient.curvedata.curve_api import CurveApi
-from energydeskclient.marketdata.derivatives_api import DerivativesApi
-from energydeskclient.customers.customer_api import CustomerApi
-from energydeskclient.assets.assets_api import AssetsApi
+from energydesk.sdk.api_connection import ApiConnection
+from energydesk.api.curves.curve_api import CurveApi
+from energydesk.api.marketdata.derivatives_api import DerivativesApi
+from energydesk.api.customers.customer_api import CustomerApi
+from energydesk.api.assets.assets_api import AssetsApi
 from os.path import join, dirname
 from dotenv import load_dotenv
 import pytz, environ
