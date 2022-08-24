@@ -5,10 +5,25 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 class CurveApi:
+    """CLass for price curves
 
+    """
     # This function returns a single price (avg) for the period requested
     @staticmethod
     def get_period_price(api_connection, from_period, until_period, price_area, currency_code):
+        """Fetches price within a period
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        :param from_period: period from
+        :type from_period: str, required
+        :param until_period: period to
+        :type until_period: str, required
+        :param price_area: price area
+        :type price_area: str, required
+        :param currency_code: specified currency (NOK, EUR, etc.)
+        :type currency_code: str, required
+        """
         logger.info("Fetching forward curve")
         qry_payload = {
             "price_area": price_area,
@@ -25,6 +40,19 @@ class CurveApi:
 
     @staticmethod
     def get_hourly_price_curve(api_connection , from_period, until_period, price_area, currency_code):
+        """Fetches hourly price curve
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        :param from_period: period from
+        :type from_period: str, required
+        :param until_period: period to
+        :type until_period: str, required
+        :param price_area: price area
+        :type price_area: str, required
+        :param currency_code: specified currency (NOK, EUR, etc.)
+        :type currency_code: str, required
+        """
         logger.info("Fetching forward curve")
         qry_payload = {
             "price_area": price_area,

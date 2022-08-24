@@ -6,8 +6,16 @@ logger = logging.getLogger(__name__)
 
 
 class CustomerApi:
+    """Class for user profiles and companies
+
+    """
     @staticmethod
     def get_user_profile(api_connection):
+        """Fetches user profile
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
         logger.info("Fetching user profile")
         json_res=api_connection.exec_get_url('/api/energydesk/getuserprofile/')
         if json_res is not None:
@@ -17,6 +25,11 @@ class CustomerApi:
 
     @staticmethod
     def get_companies(api_connection):
+        """Fetches all companies
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
         logger.info("Fetching companylist")
         json_res=api_connection.exec_get_url('/api/customers/get_all_companies')
         if json_res is None:

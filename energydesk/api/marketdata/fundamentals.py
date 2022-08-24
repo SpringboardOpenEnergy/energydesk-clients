@@ -5,9 +5,23 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 class Fundamentals:
+    """Description...
+
+      """
 
     @staticmethod
     def query_unavailable_production(base_url, token, period_from, period_until):
+        """Queries unavailable productions
+
+        :param base_url: prefix of the URL
+        :type base_url: str, required
+        :param token: API token
+        :type token: str, required
+        :param period_from: period from
+        :type period_from: str, required
+        :param period_until: period to
+        :type period_until: str, required
+        """
         logger.info("Fetching spot forex rates")
         headers = {'Authorization': 'Token ' + token}
         server_url= base_url + '/api/fundamentals/unavailable-production/'

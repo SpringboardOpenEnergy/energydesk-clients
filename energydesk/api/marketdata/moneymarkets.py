@@ -5,9 +5,19 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 class MoneyMarkets:
+    """Description...
+
+    """
 
     @staticmethod
     def fetch_forex_spot_rates(base_url, token):
+        """Fetches forex spot rates
+
+        :param base_url: prefix of the URL
+        :type base_url: str, required
+        :param token: API token
+        :type token: str, required
+        """
         logger.info("Fetching spot forex rates")
         headers = {'Authorization': 'Token ' + token}
         server_url= base_url + '/api/moneymarkets/spot_forex_rates/'
@@ -26,6 +36,13 @@ class MoneyMarkets:
 
     @staticmethod
     def fetch_zero_coupon_rates(base_url, token):
+        """Fetches zero coupon rates
+
+        :param base_url: prefix of the URL
+        :type base_url: str, required
+        :param token: API token
+        :type token: str, required
+        """
         logger.info("Fetching zero coupon rates")
         t="LqXReN1nGU4MUKzuz2kKkIrS1yI0tR"
 

@@ -21,9 +21,10 @@ class ApiConnection(object):
         self.set_token("", "Token")
 
     def get_base_url(self):
-        return self.base_url
         """Returns a string to be used as URL prefix for RET API
         """
+        return self.base_url
+
 
     def validate_token(self, token):
         """Validates a token
@@ -48,13 +49,32 @@ class ApiConnection(object):
         return True
 
     def set_token(self, token, token_type="Bearer"):
+        """Sets a token
+
+        :param token: description...
+        :type token: str, required
+        :param token_type: bearer or token
+        :type token_type: str, required
+        """
         self.token_type=token_type
         self.token=token
 
     def get_authorization_header(self):
+        """Returns the authorization header
+
+        """
         return {'Authorization':  self.token_type + ' ' + self.token}
 
     def exec_post_url(self, trailing_url, payload, extra_headers={}):
+        """Posts content from URL
+
+        :param trailing_url: description...
+        :type trailing_url: str, required
+        :param payload: description...
+        :type payload: str, required
+        :param extra_headers: description...
+        :type extra_headers: str, required
+        """
         headers=self.get_authorization_header()
         for key in extra_headers:
             headers[key]=extra_headers[key]
@@ -70,6 +90,13 @@ class ApiConnection(object):
             return None
 
     def exec_get_url(self, trailing_url,  extra_headers={}):
+        """Returns content from URL
+
+        :param trailing_url: description...
+        :type trailing_url: str, required
+        :param extra_headers: description...
+        :type extra_headers: str, required
+        """
         headers=self.get_authorization_header()
         for key in extra_headers:
             headers[key]=extra_headers[key]

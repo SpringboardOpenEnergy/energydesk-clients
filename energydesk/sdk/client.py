@@ -19,12 +19,22 @@ logging.basicConfig(level=logging.INFO,
 # Data retrieved from server are in UTC time ("GMT without daylight savings time")
 # This function converts to local time
 def convert_datetime_from_utc(utc_str, loczone="Europe/Oslo"):
+    """ Converts datetime from UTC
+
+    :param utc_str: string of UTC
+    :type utc_str: str, required
+    :param loczone: specified location
+    :type loczone: str, required
+    """
     timezone = pytz.timezone(loczone)
     utc_dt=parser.isoparse(str(utc_str))
     d_loc = utc_dt.astimezone(timezone)
     return d_loc
 
 def load_env():
+    """ Loads environment file
+
+    """
     logging.info("Loading environment")
     dotenv_path = join(dirname(__file__), '.env')
     load_dotenv(dotenv_path)

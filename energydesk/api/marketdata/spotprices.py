@@ -5,10 +5,25 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 class SpotPrices:
+    """Class for spot prices
 
+    """
 
     @staticmethod
     def fetch_spot_prices(base_url, token, market_place, period_from, period_until):
+        """Fetches spot prices
+
+        :param base_url: prefix of the URL
+        :type base_url: str, required
+        :param token: API token
+        :type token: str, required
+        :param market_place: description...
+        :type market_place: str, required
+        :param period_from: period from
+        :type period_from: str, required
+        :param period_until: period to
+        :type period_until: str, required
+        """
         logger.info("Fetching spot prices")
         headers = {'Authorization': 'Token ' + token}
         server_url = base_url + '/api/markets/spot_prices_in_period/'
