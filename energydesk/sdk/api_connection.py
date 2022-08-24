@@ -1,10 +1,20 @@
+"""
+Wrapper for Token management
+"""
+
 import requests
 import http.client
 import json
 import logging
 logger = logging.getLogger(__name__)
 
-class ApiConnection:
+class ApiConnection(object):
+    """This is a class for holding tokens used during login to Energy Desk REST API
+
+      :param base_url: the prefix of the URL (examples: https://api-test.energydesk.no, http://127.0.0.1:(0000)
+      :type base_url: str:
+
+      """
 
     def __init__(self, customer, platform="test", override_baseurl=None):
         self.base_url=override_baseurl if override_baseurl is not None else "https://" + platform + "-api." + customer + ".energydesk.no"
@@ -12,8 +22,15 @@ class ApiConnection:
 
     def get_base_url(self):
         return self.base_url
+        """Returns a string to be used as URL prefix for RET API
+        """
 
     def validate_token(self, token):
+        """Validates a token
+
+        :param token: description...
+        :type token: str, required
+        """
         http.client._MAXHEADERS = 1000
         server_url = self.get_base_url() + "/auth/convert-token"
         payload = {
