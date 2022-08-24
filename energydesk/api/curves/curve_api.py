@@ -5,7 +5,7 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 class CurveApi:
-    """CLass for price curves
+    """Class for price curves
 
     """
     # This function returns a single price (avg) for the period requested
