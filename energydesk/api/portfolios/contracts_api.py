@@ -46,9 +46,9 @@ class ContractsApi:
                    "external_contract_id":contract.external_contract_id,
                    "trading_book": contract.trading_book,
                    "trade_date": contract.trade_date,
-                   "trade_time": contract.trade_datetime,
+                   "trade_datetime": contract.trade_datetime,
                    "registration_time":convert_datime_to_utcstr(datetime.now()),
-                   "price": gen_json_money(contract.price),
+                   "contract_price": gen_json_money(contract.price),
                    "trading_fee": gen_json_money(contract.trading_fee),
                    "clearing_fee": gen_json_money(contract.clearing_fee)}
             print(contract_record)
