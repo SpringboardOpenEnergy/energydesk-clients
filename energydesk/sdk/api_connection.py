@@ -32,6 +32,7 @@ class ApiConnection(object):
         :param token: API token
         :type token: str, required
         """
+        print("Validation....")
         http.client._MAXHEADERS = 1000
         server_url = self.get_base_url() + "/auth/convert-token"
         payload = {
@@ -45,6 +46,7 @@ class ApiConnection(object):
             print("Could not validate user with backend")
             return False
         access_token = result.json()['access_token']
+        print("OGOOOT ACCESS", access_token)
         self.set_token(access_token, "Bearer")
         return True
 
