@@ -6,6 +6,7 @@ from energydesk.sdk.money_utils import gen_json_money
 from energydesk.api.portfolios.tradingbooks_api import TradingBooksApi
 from moneyed.l10n import format_money
 from energydesk.sdk.datetime_utils import convert_datime_to_utcstr
+from energydesk.sdk.datetime_utils import convert_datime_to_utcstr
 from datetime import datetime
 logger = logging.getLogger(__name__)
 #  Change
@@ -46,8 +47,11 @@ class Contract:
         self.maketplace=maketplace
         self.trader=trader
         self.standard_product=standard_product
+        self.deliveries=[]
 
-
+    def add_delivery_period(self, delivery_from, delivery_until):
+        self.deliveries.append({'delivery_from':convert_datime_to_utcstr(delivery_from),
+                                'delivery_until':convert_datime_to_utcstr(delivery_until)})
 class ContractsApi:
     """Description...
 
@@ -87,6 +91,8 @@ class ContractsApi:
                     "trader": contract.trader}
             if contract.standard_product is not None:
                 contract_record['standard_product']=api_connection.get_base_url() + "/api/markets/marketproduct/" + str(contract.standard_product) + "/"
+            if len(contract.deliveries) > 0:
+                contract_record["periods"]= contract.deliveries
             print(contract_record)
             json_records.append(contract_record)
 

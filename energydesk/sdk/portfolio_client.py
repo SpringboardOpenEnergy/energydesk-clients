@@ -51,6 +51,8 @@ if __name__ == '__main__':
     qtr_products.index = pd.RangeIndex(len(qtr_products.index))
     random.seed(datetime.now())
 
+    fake_deliv_from=(datetime.today() + timedelta(days=200)).replace( hour=0, minute=0, second=0, microsecond=0)
+    fake_deliv_until = (datetime.today() + timedelta(days=500)).replace(hour=0, minute=0, second=0, microsecond=0)
 
     TradingBooksApi.fetch_tradingbooks(api_conn)
     yester = (datetime.today() + timedelta(days=-1)).replace( hour=0, minute=0, second=0, microsecond=0)
@@ -76,13 +78,14 @@ if __name__ == '__main__':
                trader)
     #ContractsApi.register_contract(api_conn, [c])
     full_list=[]
-    for i in range(1,200):
+    for i in range(201,203):
         ext="EXT ID " + str(i)
         c.external_contract_id=ext
+        c.deliveries=[]
         rnd = randrange(len(qtr_products.index))
         selected_poduct=qtr_products.iloc[[rnd]]
-        c.standard_product=selected_poduct['pk'].iloc[0]
-
+        #c.standard_product=selected_poduct['pk'].iloc[0]
+        c.add_delivery_period(fake_deliv_from, fake_deliv_until)
         c.contract_status = ContractStatusEnum.REGISTERED
         full_list.append(copy.deepcopy(c))
     #ContractsApi.register_contract(api_conn,full_list)
@@ -90,3 +93,4 @@ if __name__ == '__main__':
                    'last_trades_count':30}  #Get last 100 trades
     contracts_df=ContractsApi.query_contracts_df(api_conn, query_payload)
     print(contracts_df)
+    #ContractsApi.query_contracts(api_conn, query_payload)
