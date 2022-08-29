@@ -119,6 +119,7 @@ class DerivativesApi:
             "currency_code": "EUR",
             "area": "ALL" if area is None else area
         }
+        print(qry_payload)
         json_res = api_connection.exec_post_url('/api/markets/area_product_prices/', qry_payload)
         if json_res is None:
             return None
