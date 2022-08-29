@@ -119,12 +119,11 @@ class DerivativesApi:
             "currency_code": "EUR",
             "area": "ALL" if area is None else area
         }
-        result = api_connection.exec_post_url('/api/markets/derivatives_prices_in_period/', qry_payload)
-        if result.status_code!=200:
-            logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
+        json_res = api_connection.exec_post_url('/api/markets/derivatives_prices_in_period/', qry_payload)
+        if json_res is None:
             return None
         #df = pd.read_json(result.json()['dataframe'], orient='records')
-        df = pd.DataFrame(data=eval(result.json()))
+        df = pd.DataFrame(data=eval(json_res))
         return df
 
     @staticmethod
