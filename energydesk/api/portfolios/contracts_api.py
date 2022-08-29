@@ -13,7 +13,8 @@ class Contract:
     def __init__(self,
                  external_contract_id,
                  trading_book,
-                 price,
+                 contract_price,
+                 contract_qty,
                  trading_fee,
                  clearing_fee,
                  trade_date,
@@ -30,7 +31,8 @@ class Contract:
                  ):
         self.external_contract_id=external_contract_id
         self.trading_book=trading_book
-        self.price=price
+        self.contract_price=contract_price
+        self.quantity = contract_qty
         self.trading_fee=trading_fee
         self.clearing_fee=clearing_fee
         self.trade_date=trade_date
@@ -67,7 +69,8 @@ class ContractsApi:
                    "trade_date": contract.trade_date,
                    "trade_time": contract.trade_datetime,
                    "last_update_time":convert_datime_to_utcstr(datetime.now()),
-                   "price": gen_json_money(contract.price),
+                   "contract_price": gen_json_money(contract.contract_price),
+                    "quantity": contract.quantity,
                    "trading_fee": gen_json_money(contract.trading_fee),
                    "clearing_fee": gen_json_money(contract.clearing_fee),
                    "contract_type": api_connection.get_base_url() + "/api/portfoliomanager/contracttype/" +
