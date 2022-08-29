@@ -65,7 +65,7 @@ if __name__ == '__main__':
     counterpart = api_conn.get_base_url() + "/api/customers/company/" + str(ndaq_pk) + "/"
     marketplace = api_conn.get_base_url() + "/api/customers/company/" + str(ndaq_pk) + "/"
     trader = api_conn.get_base_url() + "/api/customers/profile/" + str(my_user_keey) + "/"
-    c=Contract("EXT ID 667", trading_book, FormattedMoney(55.30, EUR),
+    c=Contract("EXT ID 667", trading_book, FormattedMoney(55.30, EUR),5,
                                     FormattedMoney(2.1, EUR),
                                     FormattedMoney(2.0, EUR),
                dtstr2[0:10],dtstr1, contract_type, commodity_type, instrument_type,
@@ -76,7 +76,7 @@ if __name__ == '__main__':
                trader)
     #ContractsApi.register_contract(api_conn, [c])
     full_list=[]
-    for i in range(1,6988):
+    for i in range(1,200):
         ext="EXT ID " + str(i)
         c.external_contract_id=ext
         rnd = randrange(len(qtr_products.index))
@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
         c.contract_status = ContractStatusEnum.REGISTERED
         full_list.append(copy.deepcopy(c))
-    ContractsApi.register_contract(api_conn,full_list)
+    #ContractsApi.register_contract(api_conn,full_list)
     query_payload={'trading_book_key':0,
                    'last_trades_count':30}  #Get last 100 trades
     contracts_df=ContractsApi.query_contracts_df(api_conn, query_payload)
