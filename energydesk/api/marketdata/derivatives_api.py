@@ -119,7 +119,7 @@ class DerivativesApi:
             "currency_code": "EUR",
             "area": "ALL" if area is None else area
         }
-        json_res = api_connection.exec_post_url('/api/markets/derivatives_prices_in_period/', qry_payload)
+        json_res = api_connection.exec_post_url('/api/markets/area_product_prices/', qry_payload)
         if json_res is None:
             return None
         #df = pd.read_json(result.json()['dataframe'], orient='records')
