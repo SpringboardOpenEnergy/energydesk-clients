@@ -4,19 +4,17 @@ import logging
 import copy
 from random import randrange
 import random
-import sys
 from energydesk.sdk.api_connection import ApiConnection
 from energydesk.api.customers.customer_api import CustomerApi
 from energydesk.api.marketdata.derivatives_api import DerivativesApi
 from energydesk.api.portfolios.tradingbooks_api import TradingBooksApi
 from energydesk.api.portfolios.contracts_api import ContractsApi, Contract
-from energydesk.api.portfolios.contract_enum_types import ContractStatusEnum, ContractTypeEnum, CommodityTypeEnum, InstrumentTypeEnum
+from energydesk.types.contract_enum_types import ContractStatusEnum, ContractTypeEnum, CommodityTypeEnum, InstrumentTypeEnum
 from os.path import join, dirname
-from moneyed import Money, NOK, EUR
+from moneyed import EUR
 from energydesk.sdk.datetime_utils import convert_datime_to_utcstr, convert_datime_to_locstr
 from dotenv import load_dotenv
 from energydesk.sdk.money_utils import FormattedMoney
-from dateutil import parser, relativedelta
 from datetime import datetime, timedelta
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',

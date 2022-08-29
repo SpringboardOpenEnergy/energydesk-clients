@@ -22,10 +22,23 @@ class CustomerApi:
             return json_res
         return None
 
+    @staticmethod
+    def get_company_types_df(api_connection):
+        """Fetches all company types in system with basic key+ name infmation
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        logger.info("Fetching company types")
+        json_res=api_connection.exec_get_url('/api/customers/companytype/')
+        if json_res is None:
+            return None
+        df = pd.DataFrame(data=json_res)
+        return df
 
     @staticmethod
-    def get_companies(api_connection):
-        """Fetches all companies
+    def get_companies_ext_df(api_connection):
+        """Fetches all companies in system with basic key+ name infmation
 
         :param api_connection: class with API token for use with API
         :type api_connection: str, required
@@ -34,20 +47,28 @@ class CustomerApi:
         json_res=api_connection.exec_get_url('/api/customers/get_all_companies')
         if json_res is None:
             return None
-        #print(json_res)
         df = pd.DataFrame(data=json_res["companies"])
-        #print(df)
-        #print(df.columns)
-        #for index,row in df.iterrows():
-        #    print(row["company_name"],row["registry_number"])
         return df
 
     @staticmethod
     def get_company_by_name(api_connection, company_name):
-        df = CustomerApi.get_companies(api_connection)
+        df = CustomerApi.get_companies_ext_df(api_connection)
         dfres = df.loc[df['company_name'] == company_name]
         if len(dfres.index)==0:
             logger.warning("No company named " + str(company_name))
             return None
         comppk = dfres['pk'].values[-1]
         return comppk
+
+    @staticmethod
+    def get_companies(api_connection):
+        """Fetches all company objects with URL relations. Will only return companies for which the user has rights
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        logger.info("Fetching company list")
+        json_res=api_connection.exec_get_url('/api/customers/company')
+        if json_res is None:
+            return None
+        return json_res
