@@ -50,7 +50,7 @@ if __name__ == '__main__':
     import pandas as pd
     qtr_products.index = pd.RangeIndex(len(qtr_products.index))
     random.seed(datetime.now())
-
+    sys.exit(0)
 
     TradingBooksApi.fetch_tradingbooks(api_conn)
     yester = (datetime.today() + timedelta(days=-1)).replace( hour=0, minute=0, second=0, microsecond=0)
@@ -76,7 +76,7 @@ if __name__ == '__main__':
                trader)
     #ContractsApi.register_contract(api_conn, [c])
     full_list=[]
-    for i in range(1,6988):
+    for i in range(1,100):
         ext="EXT ID " + str(i)
         c.external_contract_id=ext
         rnd = randrange(len(qtr_products.index))
