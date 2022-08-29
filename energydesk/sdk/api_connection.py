@@ -32,9 +32,10 @@ class ApiConnection(object):
         :param token: API token
         :type token: str, required
         """
-        print("Validation....")
+        print("Validation....", self.base_url)
         http.client._MAXHEADERS = 1000
         server_url = self.get_base_url() + "/auth/convert-token"
+        print(server_url)
         payload = {
             "grant_type": "convert_token",
             "client_id": "client_id",
