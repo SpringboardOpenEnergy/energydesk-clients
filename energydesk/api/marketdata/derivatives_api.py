@@ -59,7 +59,8 @@ class DerivativesApi:
         json_res=api_connection.exec_post_url('/api/markets/traded_products/', qry_payload)
         if json_res is not None:
             df = pd.DataFrame(data=eval(json_res))
-            logger.info("Products " + str(df))
+            logger.debug("Products " + str(df))
+            return df
         return None
 
     @staticmethod
