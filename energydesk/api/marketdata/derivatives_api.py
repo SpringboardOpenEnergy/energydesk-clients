@@ -97,7 +97,7 @@ class DerivativesApi:
 
 
     @staticmethod
-    def fetch_daily_prices(base_url, token, market_place, market_name, area=None):
+    def fetch_daily_prices(api_connection, market_place, market_name, area=None):
         """Fetches daily prices
 
         :param base_url: prefix of the URL
@@ -111,8 +111,7 @@ class DerivativesApi:
         :param area: area code
         :type area: str
         """
-        headers = {'Authorization': 'Token ' + token}
-        server_url= base_url + '/api/markets/area_daily_prices/'
+
         logger.info("Fetching daily prices in " + market_name)
         qry_payload = {
             "market_place": market_place,
@@ -120,15 +119,16 @@ class DerivativesApi:
             "currency_code": "EUR",
             "area": "ALL" if area is None else area
         }
-        result = requests.post(server_url, json=qry_payload, headers=headers)
+        result = api_connection.exec_post_url('/api/markets/derivatives_prices_in_period/', qry_payload)
         if result.status_code!=200:
             logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
             return None
-        df = pd.read_json(result.json()['dataframe'], orient='records')
+        #df = pd.read_json(result.json()['dataframe'], orient='records')
+        df = pd.DataFrame(data=eval(result.json()))
         return df
 
     @staticmethod
-    def fetch_prices_for_product(base_url, token, market_place, market_name, ticker, period_from, period_until):
+    def fetch_prices_for_product(api_connection, market_place, market_name, ticker, period_from, period_until):
         """Fetches price for selected product
 
         :param base_url: prefix of the URL
@@ -147,9 +147,9 @@ class DerivativesApi:
         :type period_until: str, required
         """
         logger.info("Fetching prices for product " + str(ticker))
-        headers = {'Authorization': 'Token ' + token}
 
-        server_url = base_url + '/api/markets/derivatives_prices_in_period/'
+
+        #server_url = base_url + '/api/markets/derivatives_prices_in_period/'
         logger.info("Fetching prices in " + market_name)
         qry_payload = {
             "market_place":market_place,
@@ -159,8 +159,8 @@ class DerivativesApi:
             "currency_code": "EUR",
             "ticker": ticker
         }
-
-        result = requests.post(server_url, json=qry_payload, headers=headers)
+        result = api_connection.exec_post_url('/api/markets/derivatives_prices_in_period/', qry_payload)
+        #result = requests.post(server_url, json=qry_payload, headers=headers)
         if result.status_code!=200:
             logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
             return None
