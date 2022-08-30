@@ -44,7 +44,7 @@ if __name__ == '__main__':
     env = environ.Env()
     tok = env.str('basic_auth_token')
     url= env.str('server_url')
-    api_conn=ApiConnection("","",url)
+    api_conn=ApiConnection(url)
     api_conn.set_token(tok, "Token")
 
     #price=CurveApi.get_period_price(api_conn, "2023-01-01", "2023-04-01","NO1", "EUR")
