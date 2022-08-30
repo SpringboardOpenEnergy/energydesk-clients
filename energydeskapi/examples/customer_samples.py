@@ -2,8 +2,8 @@ import sys
 
 import requests
 import logging
-from energydesk.sdk.common_utils import init_api
-from energydesk.api.customers.customer_api import CustomerApi
+from energydeskapi.sdk.common_utils import init_api
+from energydeskapi.customers.customer_api import CustomerApi
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',

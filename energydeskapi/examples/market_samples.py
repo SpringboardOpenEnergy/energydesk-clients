@@ -2,8 +2,8 @@ import sys
 
 import requests
 import logging
-from energydesk.sdk.common_utils import init_api
-from energydesk.api.marketdata.derivatives_api import DerivativesApi
+from energydeskapi.sdk.common_utils import init_api
+from energydeskapi.marketdata.derivatives_api import DerivativesApi
 
 from os.path import join, dirname
 from dotenv import load_dotenv

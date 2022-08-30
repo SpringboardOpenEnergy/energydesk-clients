@@ -2,10 +2,9 @@ import sys
 
 import requests
 import logging
-from energydesk.sdk.api_connection import ApiConnection
-from energydesk.api.portfolios.tradingbooks_api import TradingBooksApi
-
-from energydesk.sdk.common_utils import init_api
+from energydeskapi.sdk.api_connection import ApiConnection
+from energydeskapi.portfolios.tradingbooks_api import TradingBooksApi
+from energydeskapi.sdk.common_utils import init_api
 import pytz, environ
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',

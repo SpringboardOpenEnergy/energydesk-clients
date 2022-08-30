@@ -1,12 +1,7 @@
-import sys
-
-import requests
 import logging
-from energydesk.sdk.api_connection import ApiConnection
-from energydesk.api.contracts.contracts_api import ContractsApi
+from energydeskapi.contracts.contracts_api import ContractsApi
+from energydeskapi.sdk.common_utils import init_api
 
-from energydesk.sdk.common_utils import init_api
-import pytz, environ
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     handlers=[logging.FileHandler("energydesk_client.log"),

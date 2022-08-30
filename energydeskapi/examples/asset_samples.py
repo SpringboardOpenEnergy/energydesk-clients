@@ -1,9 +1,6 @@
-import sys
-
-import requests
 import logging
-from energydesk.sdk.common_utils import init_api
-from energydesk.api.assets.assets_api import AssetsApi
+from energydeskapi.sdk.common_utils import init_api
+from energydeskapi.assets.assets_api import AssetsApi
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
