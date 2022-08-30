@@ -11,3 +11,10 @@ class CompanyTypeEnum(Enum):
     TRADING_COMPANY = 7
     SERVICE_COMPANY = 8
     OTHER_TYPE = 9
+
+
+class UserRoleEnum(Enum):
+    ADMIN = 1
+    TRADER = 2
+    RISKMANAGER =3
+    STAKEHOLDER = 4
