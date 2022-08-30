@@ -16,9 +16,12 @@ class ApiConnection(object):
 
       """
 
-    def __init__(self, base_url):
+    def __init__(self, base_url, bearer_token=None):
         self.base_url = base_url
-        self.set_token("", "Token")
+        if bearer_token is None:
+            self.set_token("", "Token")
+        else:
+            self.set_token(bearer_token, "Bearer")
 
     def get_base_url(self):
         """Returns a string to be used as URL prefix for RET API
