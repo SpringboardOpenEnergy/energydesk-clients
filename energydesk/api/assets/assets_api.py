@@ -34,6 +34,32 @@ class AssetsApi:
         json_res = api_connection.exec_get_url('/api/assets/assettype/')
         if json_res is None:
             return None
-        print(json_res)
+        df = pd.DataFrame(data=json_res)
+        return df
+
+
+    @staticmethod
+    def get_assets(api_connection):
+        """ Receives the type of assets
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        json_res = api_connection.exec_get_url('/api/assets/asset/')
+        if json_res is None:
+            return None
+        df = pd.DataFrame(data=json_res)
+        return df
+
+    @staticmethod
+    def get_assets_ext(api_connection):
+        """ Receives a list of assets with extended information
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        json_res = api_connection.exec_get_url('/api/assets/assets_ext/')
+        if json_res is None:
+            return None
         df = pd.DataFrame(data=json_res)
         return df

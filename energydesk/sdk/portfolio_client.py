@@ -90,5 +90,5 @@ if __name__ == '__main__':
     query_payload={'trading_book_key':0,
                    'last_trades_count':30}  #Get last 100 trades
     contracts_df=ContractsApi.query_contracts_df(api_conn, query_payload)
-    print(contracts_df)
+    print(contracts_df.columns)
     #ContractsApi.query_contracts(api_conn, query_payload)
