@@ -16,8 +16,8 @@ class ApiConnection(object):
 
       """
 
-    def __init__(self, customer, platform="test", override_baseurl=None):
-        self.base_url=override_baseurl if override_baseurl is not None else "https://" + platform + "-api." + customer + ".energydesk.no"
+    def __init__(self, base_url):
+        self.base_url = base_url
         self.set_token("", "Token")
 
     def get_base_url(self):
@@ -35,7 +35,6 @@ class ApiConnection(object):
         print("Validation....", self.base_url)
         http.client._MAXHEADERS = 1000
         server_url = self.get_base_url() + "/auth/convert-token"
-        print(server_url)
         payload = {
             "grant_type": "convert_token",
             "client_id": "client_id",
@@ -47,7 +46,6 @@ class ApiConnection(object):
             print("Could not validate user with backend")
             return False
         access_token = result.json()['access_token']
-        print("OGOOOT ACCESS", access_token)
         self.set_token(access_token, "Bearer")
         return True
 
