@@ -23,6 +23,20 @@ class CustomerApi:
         return None
 
     @staticmethod
+    def get_users(api_connection):
+        """Fetches user profile
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        logger.info("Fetching user profile")
+        json_res=api_connection.exec_get_url('/api/customers/users/traders')
+        if json_res is not None:
+            df = pd.DataFrame(data=json_res)
+            return df
+        return None
+
+    @staticmethod
     def get_company_types_df(api_connection):
         """Fetches all company types in system with basic key+ name infmation
 

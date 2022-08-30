@@ -20,10 +20,13 @@ def query_company_types(api_conn):
     df=CustomerApi.get_company_types_df(api_conn)
     print(df)
 
-
+def list_users(api_conn):
+    df=CustomerApi.get_users(api_conn)
+    print(df)
 
 if __name__ == '__main__':
 
     api_conn=init_api()
     user_profile=CustomerApi.get_user_profile(api_conn)
-    query_company_types(api_conn)
+    print(user_profile)
+    list_users(api_conn)
