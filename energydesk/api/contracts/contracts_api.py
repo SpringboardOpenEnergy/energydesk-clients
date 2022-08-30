@@ -111,14 +111,42 @@ class ContractsApi:
 
     @staticmethod
     def query_contracts(api_connection, query_payload={"trading_book_key":0, "last_trades_count": 10}):
-        logger.info("Fetching coontracts")
+        logger.info("Fetching contracts")
         json_res = api_connection.exec_post_url('/api/portfoliomanager/query_contracts/', query_payload)
         print(json_res)
         return None
 
     @staticmethod
     def query_contracts_df(api_connection, query_payload={"trading_book_key":0, "last_trades_count": 10}):
-        logger.info("Fetching coontracts")
+        logger.info("Fetching contracts")
         json_res = api_connection.exec_post_url('/api/portfoliomanager/query_contracts_ext/', query_payload)
+        df = pd.DataFrame(data=json_res)
+        return df
+
+    @staticmethod
+    def list_contract_statuses(api_connection):
+        logger.info("Fetching contract statues")
+        json_res = api_connection.exec_get_url('/api/portfoliomanager/contractstatus/')
+        df = pd.DataFrame(data=json_res)
+        return df
+
+    @staticmethod
+    def list_contract_types(api_connection):
+        logger.info("Fetching contract types")
+        json_res = api_connection.exec_get_url('/api/portfoliomanager/contracttype/')
+        df = pd.DataFrame(data=json_res)
+        return df
+
+    @staticmethod
+    def list_commodity_types(api_connection):
+        logger.info("Fetching commodity types")
+        json_res = api_connection.exec_get_url('/api/portfoliomanager/commoditytype/')
+        df = pd.DataFrame(data=json_res)
+        return df
+
+    @staticmethod
+    def list_instrument_types(api_connection):
+        logger.info("Fetching instrument types")
+        json_res = api_connection.exec_get_url('/api/portfoliomanager/instrumenttype/')
         df = pd.DataFrame(data=json_res)
         return df

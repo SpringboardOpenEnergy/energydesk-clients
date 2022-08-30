@@ -8,7 +8,7 @@ from energydesk.sdk.api_connection import ApiConnection
 from energydesk.api.customers.customer_api import CustomerApi
 from energydesk.api.marketdata.derivatives_api import DerivativesApi
 from energydesk.api.portfolios.tradingbooks_api import TradingBooksApi
-from energydesk.api.portfolios.contracts_api import ContractsApi, Contract
+from energydesk.api.contracts.contracts_api import ContractsApi, Contract
 from energydesk.types.contract_enum_types import ContractStatusEnum, ContractTypeEnum, CommodityTypeEnum, InstrumentTypeEnum
 from os.path import join, dirname
 from moneyed import EUR
