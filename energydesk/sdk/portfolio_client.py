@@ -76,19 +76,19 @@ if __name__ == '__main__':
                trader)
     #ContractsApi.register_contract(api_conn, [c])
     full_list=[]
-    for i in range(201,203):
+    for i in range(1,203):
         ext="EXT ID " + str(i)
         c.external_contract_id=ext
         c.deliveries=[]
         rnd = randrange(len(qtr_products.index))
         selected_poduct=qtr_products.iloc[[rnd]]
-        #c.standard_product=selected_poduct['pk'].iloc[0]
-        c.add_delivery_period(fake_deliv_from, fake_deliv_until)
+        c.standard_product=selected_poduct['pk'].iloc[0]
+        #c.add_delivery_period(fake_deliv_from, fake_deliv_until)
         c.contract_status = ContractStatusEnum.REGISTERED
         full_list.append(copy.deepcopy(c))
     #ContractsApi.register_contract(api_conn,full_list)
     query_payload={'trading_book_key':0,
                    'last_trades_count':30}  #Get last 100 trades
     contracts_df=ContractsApi.query_contracts_df(api_conn, query_payload)
-    print(contracts_df.columns)
+    print(contracts_df)
     #ContractsApi.query_contracts(api_conn, query_payload)

@@ -22,6 +22,7 @@ def get_contract_types(api_conn):
     print(df)
     df=ContractsApi.list_contract_statuses(api_conn)
     print(df)
+
 if __name__ == '__main__':
     api_conn=init_api()
     get_contract_types(api_conn)
