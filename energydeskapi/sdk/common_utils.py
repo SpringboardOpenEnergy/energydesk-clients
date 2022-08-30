@@ -3,7 +3,7 @@ import logging
 from os.path import join, dirname
 from dotenv import load_dotenv
 import pytz, environ
-from energydesk.sdk.api_connection import ApiConnection
+from energydeskapi.sdk.api_connection import ApiConnection
 logger = logging.getLogger(__name__)
 
 def load_env():

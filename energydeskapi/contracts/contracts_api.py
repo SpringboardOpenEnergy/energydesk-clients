@@ -2,11 +2,11 @@ import requests
 import json
 import logging
 import pandas as pd
-from energydesk.sdk.money_utils import gen_json_money
-from energydesk.api.portfolios.tradingbooks_api import TradingBooksApi
+from energydeskapi.sdk.money_utils import gen_json_money
+from energydeskapi.portfolios.tradingbooks_api import TradingBooksApi
 from moneyed.l10n import format_money
-from energydesk.sdk.datetime_utils import convert_datime_to_utcstr
-from energydesk.sdk.datetime_utils import convert_datime_to_utcstr
+from energydeskapi.sdk.datetime_utils import convert_datime_to_utcstr
+from energydeskapi.sdk.datetime_utils import convert_datime_to_utcstr
 from datetime import datetime
 logger = logging.getLogger(__name__)
 #  Change
