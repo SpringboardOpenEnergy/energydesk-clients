@@ -31,3 +31,4 @@ if __name__ == '__main__':
 
     api_conn=init_api()
     load_digraph_of_ownerships(api_conn)
+    get_asset_owners_info(api_conn)
