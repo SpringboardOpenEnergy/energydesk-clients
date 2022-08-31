@@ -10,7 +10,7 @@ def load_env():
     """ Loads environment file
     """
     logging.info("Loading environment")
-    dotenv_path = join(dirname(__file__), '.env')
+    dotenv_path = join(dirname(__file__), 'sample.env')
     load_dotenv(dotenv_path)
 
 
