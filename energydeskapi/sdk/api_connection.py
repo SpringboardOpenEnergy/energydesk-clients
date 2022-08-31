@@ -8,6 +8,9 @@ import json
 import logging
 logger = logging.getLogger(__name__)
 
+class TokenException(Exception):
+    pass
+
 class ApiConnection(object):
     """This is a class for holding tokens used during login to Energy Desk REST API
 
@@ -91,6 +94,8 @@ class ApiConnection(object):
             return json_data
         else:
             logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
+            if result.status_code==401:
+                raise TokenException("Token is invalid")
             return None
 
     def exec_get_url(self, trailing_url,  extra_headers={}):
@@ -113,4 +118,6 @@ class ApiConnection(object):
             return json_data
         else:
             logger.error("Problens calling EnergyDesk API " + str(result) + " " + result.text)
+            if result.status_code==401:
+                raise TokenException("Token is invalid")
             return None
