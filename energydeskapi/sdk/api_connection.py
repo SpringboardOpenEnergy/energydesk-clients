@@ -8,6 +8,10 @@ import json
 import logging
 logger = logging.getLogger(__name__)
 
+class AuthorizationFailedException(Exception):
+    pass
+
+
 class TokenException(Exception):
     pass
 
