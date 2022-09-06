@@ -36,6 +36,13 @@ class CustomerApi:
             return df
         return None
 
+    def register_company(api_connection, company):
+        json_res = api_connection.exec_post_url('/api/customers/register_company', company)
+        if json_res is None:
+            return False
+        print(json_res)
+        return json_res["Registration"]
+
     @staticmethod
     def get_company_types_df(api_connection):
         """Fetches all company types in system with basic key+ name infmation
