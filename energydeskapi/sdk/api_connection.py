@@ -115,7 +115,7 @@ class ApiConnection(object):
             headers[key]=extra_headers[key]
         server_url= self.get_base_url() + trailing_url
         logger.info("Calling URL " + str(server_url))
-        #logger.info("...with payload " + str(payload) + " and headers " + str(headers))
+        logger.info("...with payload " + " and headers " + str(headers))
         result = requests.get(server_url,  headers=headers)
         if result.status_code<202:
             json_data = result.json()

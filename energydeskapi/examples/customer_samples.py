@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.INFO,
 
 def query_companies(api_conn):
     json_companies=CustomerApi.get_companies(api_conn)
+    print(json_companies)
     all_companies_df=CustomerApi.get_companies_ext_df(api_conn)
     print(all_companies_df)
 
@@ -27,6 +28,5 @@ def list_users(api_conn):
 if __name__ == '__main__':
 
     api_conn=init_api()
-    user_profile=CustomerApi.get_user_profile(api_conn)
-    print(user_profile)
-    list_users(api_conn)
+
+    query_companies(api_conn)
