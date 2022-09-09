@@ -44,3 +44,4 @@ if __name__ == '__main__':
     #print(user_profile)
     #list_users(api_conn)
     #register_companies(api_conn)
+    query_companies(api_conn)
