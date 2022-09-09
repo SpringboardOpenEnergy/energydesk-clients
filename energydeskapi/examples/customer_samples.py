@@ -43,4 +43,4 @@ if __name__ == '__main__':
     #user_profile=CustomerApi.get_user_profile(api_conn)
     #print(user_profile)
     #list_users(api_conn)
-    register_companies(api_conn)
+    #register_companies(api_conn)

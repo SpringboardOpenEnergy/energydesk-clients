@@ -10,7 +10,8 @@ class CompanyTypeEnum(Enum):
     BANK = 6
     TRADING_COMPANY = 7
     SERVICE_COMPANY = 8
-    OTHER_TYPE = 9
+    BROKER = 9
+    GENERAL_COMPANY = 10
 
 
 class UserRoleEnum(Enum):
