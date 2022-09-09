@@ -21,4 +21,4 @@ def list_banks(api_conn):
 if __name__ == '__main__':
 
     api_conn=init_api()
-    list_banks()
+    list_banks(api_conn)

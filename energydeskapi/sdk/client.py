@@ -36,8 +36,8 @@ def load_env():
 if __name__ == '__main__':
     load_env()
     env = environ.Env()
-    tok = env.str('basic_auth_token')
-    url= env.str('server_url')
+    tok = env.str('ENERGYDESK_TOKEN')
+    url= env.str('ENERGYDESK_URL')
     api_conn=ApiConnection(url)
     api_conn.set_token(tok, "Token")
 
