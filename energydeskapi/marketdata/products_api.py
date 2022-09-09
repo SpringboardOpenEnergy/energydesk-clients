@@ -28,7 +28,7 @@ class ProductsApi:
             "market_name": market,
             "tradingdate_from": None,
         }
-        json_res=api_connection.exec_post_url('/api/markets/traded_products/')
+        json_res=api_connection.exec_post_url('/api/markets/query_products_ext/')
         if json_res is None:
             return None
         return json_res
