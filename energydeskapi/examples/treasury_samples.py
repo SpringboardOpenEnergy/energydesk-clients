@@ -14,7 +14,8 @@ logging.basicConfig(level=logging.INFO,
 
 
 def list_banks(api_conn):
-    df=TreasuryApi.get_treasury_banks(api_conn)
+    df=TreasuryApi.register_treasury_bank(api_conn, "880824872", "SWEDDDDDBANK")
+    #df=TreasuryApi.get_treasury_banks(api_conn)
     print(df)
 
 

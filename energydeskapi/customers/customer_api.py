@@ -81,6 +81,7 @@ class CustomerApi:
         comppk = dfres['pk'].values[-1]
         return comppk
 
+
     @staticmethod
     def get_companies(api_connection):
         """Fetches all company objects with URL relations. Will only return companies for which the user has rights
@@ -90,6 +91,19 @@ class CustomerApi:
         """
         logger.info("Fetching company list")
         json_res=api_connection.exec_get_url('/api/customers/company')
+        if json_res is None:
+            return None
+        return json_res
+
+    @staticmethod
+    def get_company_from_registry_number(api_connection, registry_number):
+        """Fetches all company objects with URL relations. Will only return companies for which the user has rights
+
+        :param api_connection: class with API token for use with API
+        :type api_connection: str, required
+        """
+        logger.info("Fetching company ", registry_number)
+        json_res=api_connection.exec_get_url('/api/customers/company_from_registry_number?registry_number=' + registry_number )
         if json_res is None:
             return None
         return json_res

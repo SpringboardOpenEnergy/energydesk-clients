@@ -21,6 +21,9 @@ def query_company_types(api_conn):
     df=CustomerApi.get_company_types_df(api_conn)
     print(df)
 
+def load_company_from_regnumber(api_conn, regnumber):
+    comp=CustomerApi.get_company_from_registry_number(api_conn, regnumber)
+    print(comp)
 
 def list_users(api_conn):
     df=CustomerApi.get_users(api_conn)
@@ -44,4 +47,4 @@ if __name__ == '__main__':
     #print(user_profile)
     #list_users(api_conn)
     #register_companies(api_conn)
-    query_companies(api_conn)
+    load_company_from_regnumber(api_conn, "995550164")
