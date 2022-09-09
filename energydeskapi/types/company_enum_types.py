@@ -23,6 +23,7 @@ class CompanyRoleEnum(Enum):
     BROKER = 6
     CLEARING_HOUSE = 7
     PORTFOLIO_MANAGER = 8
+    BANK = 9
 
 class UserRoleEnum(Enum):
     ADMIN = 1
