@@ -13,6 +13,7 @@ class CompanyTypeEnum(Enum):
     GENERAL_COMPANY = 9
 
 # The company type is the main type of a company, but a company may have several roles (operator, bank) (asset owner, portfolio manager)
+# Role is the most important property in terms of having appropriate access
 class CompanyRoleEnum(Enum):
     DSO = 1
     FSP = 2
