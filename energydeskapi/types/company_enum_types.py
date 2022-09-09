@@ -10,9 +10,18 @@ class CompanyTypeEnum(Enum):
     BANK = 6
     TRADING_COMPANY = 7
     SERVICE_COMPANY = 8
-    BROKER = 9
-    GENERAL_COMPANY = 10
+    GENERAL_COMPANY = 9
 
+# The company type is the main type of a company, but a company may have several roles (operator, bank) (asset owner, portfolio manager)
+class CompanyRoleEnum(Enum):
+    DSO = 1
+    FSP = 2
+    BRP =3
+    ASSET_OWNER = 4
+    OPERATOR = 5
+    BROKER = 6
+    CLEARING_HOUSE = 7
+    PORTFOLIO_MANAGER = 8
 
 class UserRoleEnum(Enum):
     ADMIN = 1
