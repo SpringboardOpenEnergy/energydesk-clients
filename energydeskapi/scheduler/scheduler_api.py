@@ -24,5 +24,6 @@ class SchedulerApi:
         json_res = api_connection.exec_get_url('/api/schedulemanager/scheduledjobsext/')
         if json_res is None:
             return None
+        print(json_res)
         df = pd.DataFrame(data=json_res)
         return df
