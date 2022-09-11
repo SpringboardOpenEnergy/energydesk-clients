@@ -17,6 +17,8 @@ def schedules(api_conn):
     df=SchedulerApi.get_scheduled_jobs_df(api_conn)
     #df=TreasuryApi.get_treasury_banks(api_conn)
     print(df)
+    jobs = SchedulerApi.get_scheduled_jobs(api_conn)
+    print(jobs)
 
 
 if __name__ == '__main__':
