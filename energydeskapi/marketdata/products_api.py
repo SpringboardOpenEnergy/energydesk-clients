@@ -22,7 +22,7 @@ class ProductsApi:
         """
         mapi=MarketsApi.get_market_object(api_connection, market_enum)
         print(mapi)
-        logger.info("Fetching products in market " + str(mapi['name']))
+        logger.info("Fetching products in market " + str(market))
         qry_payload = {
             #"market_place": None,
             "market_name": mapi['name'],

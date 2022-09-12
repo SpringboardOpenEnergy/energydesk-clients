@@ -6,11 +6,13 @@ import pytz, environ
 from energydeskapi.sdk.api_connection import ApiConnection
 logger = logging.getLogger(__name__)
 
-def load_env():
+def load_env(current_dir=None):
     """ Loads environment file
     """
     logging.info("Loading environment")
-    dotenv_path = join(dirname(__file__), '.env')
+    if current_dir is None:
+        current_dir=dirname(__file__)
+    dotenv_path = join(current_dir, '.env')
     load_dotenv(dotenv_path)
 
 
