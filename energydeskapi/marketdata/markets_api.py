@@ -20,7 +20,7 @@ class MarketsApi:
         :type api_connection: str, required
         """
 
-        json_res=api_connection.exec_get_url('/api/markets/market/' + market_enum.value + "/")
+        json_res=api_connection.exec_get_url('/api/markets/markets/' + str(market_enum.value) + "/")
         if json_res is None:
             return None
         return json_res

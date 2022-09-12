@@ -22,13 +22,13 @@ class ProductsApi:
         """
         mapi=MarketsApi.get_market_object(api_connection, market_enum)
         print(mapi)
-        logger.info("Fetching products in market " + str(market))
+        logger.info("Fetching products in market " + str(mapi['name']))
         qry_payload = {
-            "market_place": None,
-            "market_name": market,
-            "tradingdate_from": None,
+            #"market_place": None,
+            "market_name": mapi['name'],
+            #"tradingdate_from": None,
         }
-        json_res=api_connection.exec_post_url('/api/markets/traded_products/')
+        json_res=api_connection.exec_post_url('/api/markets/traded_products/',qry_payload)
         if json_res is None:
             return None
         return json_res

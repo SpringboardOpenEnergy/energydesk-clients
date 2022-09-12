@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO,
 
 
 def get_market_products(api_conn):
-    df=ProductsApi.get_products(api_conn, MarketEnum.NORDIC_POWER)
+    df=ProductsApi.get_products(api_conn, MarketEnum.CURRENCY_MARKET)
     print(df)
 
 
