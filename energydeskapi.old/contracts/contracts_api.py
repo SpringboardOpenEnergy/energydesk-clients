@@ -90,7 +90,7 @@ class ContractsApi:
                     "marketplace": contract.maketplace,
                     "trader": contract.trader}
             if contract.standard_product is not None:
-                contract_record['standard_product']=api_connection.get_base_url() + "/api/markets/marketproduct/" + str(contract.standard_product) + "/"
+                contract_record['standard_product']=api_connection.get_base_url() + "/api/markets/marketproducts/" + str(contract.standard_product) + "/"
             if len(contract.deliveries) > 0:
                 contract_record["periods"]= contract.deliveries
             print(contract_record)
